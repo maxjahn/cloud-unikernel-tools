@@ -38,7 +38,7 @@ echo "\nImporting image:"
 
 oci_image_id=`oci compute image import from-object --display-name $2 --launch-mode PARAVIRTUALIZED --source-image-type QCOW2 --bucket-name $tmp_bucket --name $2 --namespace $oci_namespace --compartment-id $1 --query "data.id" --raw-output`
 
-echo "\n\e[92m... this will take some minutes ...\e[39m"
+echo "\n\e[92m... this will take several minutes ...\e[39m"
 
 watch -x -n 10 -g -d oci compute image get --image-id $oci_image_id --query 'data."lifecycle-state"'
 
